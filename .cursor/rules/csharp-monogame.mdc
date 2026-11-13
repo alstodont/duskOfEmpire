@@ -1,0 +1,15 @@
+---
+description: C# / MonoGame implementation conventions for duskOfEmpire source and content
+globs: "**/*.cs,**/*.fx,**/*.mgcb,**/config.json,**/maps/**/*.json"
+alwaysApply: false
+---
+
+# C# / MonoGame conventions
+
+- Target: .NET 8, MonoGame 3.8 DesktopGL, Arch ECS, LiteNetLib, MemoryPack, System.Text.Json.
+- Physics: custom kinematic (AABB/sphere + spatial hash). Do not pull in a full rigidbody engine unless CONCEPT changes.
+- Avoid LINQ / per-frame allocations in hot sim and render paths.
+- Net DTOs: MemoryPack. Config/map: JSON.
+- Content: MGCB. Shaders: HLSL `.fx`. Phase 0 stubs must include `memory.fx` and `light.fx` plus RT slots: scene, memoryMask, memoryView, light.
+- Memory visuals: Darkwood-like fog/desat/blur filter on the **map skeleton / explored mask**, not a pointless fullscreen beauty blur.
+- Namespaces and projects follow `@docs/PHASE0.md` (`DuskOfEmpire.Core`, `.Sim`, `.Rendering`, `.Client`, `.Net`, …).
