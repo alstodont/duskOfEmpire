@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <MonoGamePlatform>DesktopGL</MonoGamePlatform>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Version>0.1.0</Version>
+    <InformationalVersion>0.1.0-phase0</InformationalVersion>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.6.1" />
+    <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.6.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DuskOfEmpire.Core\DuskOfEmpire.Core.csproj" />
+    <ProjectReference Include="..\DuskOfEmpire.Sim\DuskOfEmpire.Sim.csproj" />
+    <ProjectReference Include="..\DuskOfEmpire.Rendering\DuskOfEmpire.Rendering.csproj" />
+    <ProjectReference Include="..\DuskOfEmpire.Gameplay\DuskOfEmpire.Gameplay.csproj" />
+    <ProjectReference Include="..\DuskOfEmpire.Debug\DuskOfEmpire.Debug.csproj" />
+    <ProjectReference Include="..\DuskOfEmpire.Net\DuskOfEmpire.Net.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <MonoGameContentReference Include="..\DuskOfEmpire.Rendering\Effects\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\data\config.json" Link="data\config.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\client.json" Link="data\client.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\data\maps\test_city.json" Link="data\maps\test_city.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

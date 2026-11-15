@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\DuskOfEmpire.Core\DuskOfEmpire.Core.csproj" />
+    <ProjectReference Include="..\DuskOfEmpire.Physics\DuskOfEmpire.Physics.csproj" />
+  </ItemGroup>
+</Project>

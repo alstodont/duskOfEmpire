@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <MonoGamePlatform>DesktopGL</MonoGamePlatform>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.6.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DuskOfEmpire.Core\DuskOfEmpire.Core.csproj" />
+  </ItemGroup>
+</Project>

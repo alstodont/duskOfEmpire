@@ -1,0 +1,15 @@
+{
+  "Memory": {},
+  "Pvpve": {},
+  "Womb": {},
+  "Herder": {},
+  "Item": {},
+  "Slots": {},
+  "Loot": {
+    "GroundCleanupSec": 300,
+    "TopLootWindowSec": 600,
+    "ShooterConsumableCooldownSec": 30
+  },
+  "FriendlyFirePct": 10,
+  "RespawnPvpveSec": 30
+}

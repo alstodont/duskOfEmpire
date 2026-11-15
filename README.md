@@ -6,17 +6,22 @@
 
 - [Концепт v1.1](docs/CONCEPT.md) — геймдизайн и архитектурные locks
 - [ТЗ Phase 0](docs/PHASE0.md) — фундамент MonoGame / sim·render / host·client
+- [Движок](docs/ENGINE.md) — контракт шага, авторитета и кадра
 - [AGENTS.md](AGENTS.md) — brief для Cursor-агентов
 
-## Cursor
+## Сборка (Windows)
 
-- Rules: `.cursor/rules/` (`duskofempire-core`, `csharp-monogame`)
-- Skills: `.cursor/skills/doe-*` (architecture, perception, noise-ai, net-lan, phase-dod, prompt-templates)
+Нужен .NET 8 SDK.
 
-## Статус
+```
+dotnet build DuskOfEmpire.sln
+dotnet run --project src/DuskOfEmpire.Client
+```
 
-Репозиторий на этапе документации + agent tooling. Реализация стартует с Phase 0 (Windows, MonoGame 3.8, .NET 8).
+Окно 1920×1080. WASD двигает куб в плоскости, мышь задаёт направление, Esc закрывает окно. Стены арены держат куб внутри кадра.
 
-## Стек (кратко)
+`data/config.json` заполняет правила матча. `data/client.json` хранит громкость, чувствительность мыши, яркость и качество постэффектов. Кнопка в окне ImGui перечитывает только `client.json` рядом с запущенным exe (`bin/Debug/net8.0/data/client.json`). Правила матча эта кнопка не меняет.
+
+## Стек
 
 MonoGame DesktopGL · Arch ECS · своя kinematic-физика · LiteNetLib (LAN) · HLSL (memory + light RT)
