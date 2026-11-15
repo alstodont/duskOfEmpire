@@ -1,0 +1,42 @@
+---
+description: Core duskOfEmpire product and architecture locks. Apply to all game work.
+alwaysApply: true
+---
+
+# duskOfEmpire — core locks
+
+Canonical design: `@docs/CONCEPT.md`. Phase foundation: `@docs/PHASE0.md`.
+
+## Identity
+
+- Product / repo / namespaces: **duskOfEmpire** / `DuskOfEmpire.*` (never TechnoShooter).
+- Vertical slice platform: **Windows** DesktopGL. Do not require Linux/Mac for Phase 0 DoD.
+- Multiplayer slice: **LAN** (separate processes), not split-screen.
+
+## Pillars (slice feel)
+
+1. Noise leads to death.
+2. Trust only your own memory — truth exists only inside the current view sector.
+
+## Architecture (non-negotiable)
+
+- **Sim ≠ Render**: `ISimSystem` has Update only; `IRenderSystem` has Render only. No Draw inside sim.
+- **Host authority**: simulation tick **30 Hz** on host. Host owns world, NPC, hitscan, loot, objectives.
+- Client: input, local movement prediction, **independent memory/phantoms/light for own view**.
+- Render may run at 60 FPS with interpolation of remotes.
+- Match rules config (memory timers, damage, hordes, FF, loot) = host → replicate. Client prefs (audio, mouse, brightness) = local hot-reload OK.
+
+## Gameplay locks (do not “simplify away”)
+
+- Slice classes: shotgun tank; basic shooter with random consumable skill every 30s.
+- PvPvE: **shared** objectives; sabotage is intended; hordes **2/2/3** on capture start; **no** end-horde soft-stop.
+- Ally outside sector = presence blot only (no class/HP/facing).
+- Phantoms: full visual mimic, **zero** server effect; die when entering true sector.
+- Loot pool fixed at generation; top-loot bias in last 10 minutes; ground loot cleared every 5 minutes.
+- Kick: always available, minimal damage, weak impulse on large bodies.
+
+## Working rules
+
+- One chat task = one phase concern. Read the phase DoD before coding.
+- Prefer `config.json` constants over hardcoded magic numbers for balance.
+- When cutting scope: voice → NPC polish → procgen. Never cut memory, noise, or shared sabotage objectives first.
